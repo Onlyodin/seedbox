@@ -1,0 +1,27 @@
+scgi_port = 127.0.0.1:@@scgi@@
+encoding_list = UTF-8
+#umask = 022
+port_range = @@port@@-@@port@@
+port_random = no
+check_hash = no
+directory = /home/@@user@@/downloads
+session = /home/@@user@@/.session
+encryption = allow_incoming, try_outgoing, enable_retry
+schedule2 = watch_directory,1,1,"load.start=/home/@@user@@/watch/*.torrent"
+#schedule = untied_directory,5,5,"stop.untied=/home/@@user@@/rtorrent/watch/*.torrent"
+#enable_trackers = yes
+#min_peers = 40
+#max_peers = 100
+#min_peers_seed = 10
+#max_peers_seed = 50
+#max_uploads = 15
+#download_rate = 0
+#upload_rate = 0
+dht = auto
+dht_port = 6881
+#hash_read_ahead = 10
+#hash_interval = 100
+#hash_max_tries = 10
+execute = {sh,-c,/usr/bin/php /var/www/ruTorrent/php/initplugins.php @@user@@ &}
+ip = @@ip@@
+bind = @@ip@@
